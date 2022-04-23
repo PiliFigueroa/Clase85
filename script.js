@@ -172,9 +172,9 @@ const deleteProduct = (id) => {
 for (const button of queryClass("category--buttons")) { // por cada uno de mis botones de categorias, le agrego el evento de tipo click para filterar
     button.addEventListener("click", () => {
         queryId("table").classList.add("d-none") // aca le vuelvo a agregar el display none a la tabla por si el usuario luego de ver el carrito, vuelve a la pagina principal de productos
-        if (button.id != "todo") { // si el boton no es el de todos mis productos, agarro mi variable category y le digo que sea igual al id de mi boton que justamente es la categoria del producto
+        if (button.id) { // si mi boton tiene id, guardo en category ese id, el unico que no tiene id es mi boton "todo" por lo tanto si clickeo en todo sigue siendo undefined
             category = button.id
-        } else { // en caso del boton "todo" entra en el else y le digo que sea undefined para poder mostrar todos los productos, ver funcion requestProducts() linea 54
+        } else {
             category = undefined
         }
         requestProducts()
